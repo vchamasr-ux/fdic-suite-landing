@@ -34,7 +34,7 @@ const APPS = [
     {
         number: '03',
         name: 'B2B Fintech Prospector',
-        url: null,
+        url: 'https://fintechprospector.vercel.app',
         persona: 'For: Fintech CROs & VP Sales',
         pitch:
             "Stop cold-calling blind. Filter the entire FDIC universe by your buyers' pain points and auto-generate personalized outreach emails for the highest-value targets.",
@@ -43,12 +43,12 @@ const APPS = [
             'Z-score ranked prospect leaderboard',
             "AI cold email generator personalized to each bank's KPIs",
         ],
-        screenshot: null,
+        screenshot: '/screenshots/prospector.png',
     },
     {
         number: '04',
         name: 'De Novo Whitespace Explorer',
-        url: null,
+        url: 'https://de-novo-whitespace-explorer.vercel.app',
         persona: 'For: Private Equity & Bank Founders',
         pitch:
             'Consolidation has left entire markets starving for a local bank. Discover exactly where — a live choropleth map revealing geographic whitespace based on deposit density.',
@@ -57,13 +57,13 @@ const APPS = [
             'Market Scorecard with deposit CAGR and HHI concentration',
             'De Novo projection modeler for Day 1 / Year 3 balance sheet',
         ],
-        screenshot: null,
+        screenshot: '/screenshots/denovo.png',
     },
 ];
 
 export default function AppCards() {
     return (
-        <section id="suite" className="py-24 px-6" style={{ background: '#0a0f1e' }}>
+        <section id="suite" className="py-24 px-6 bg-background">
             <div className="max-w-6xl mx-auto">
                 <motion.h2
                     className="text-4xl md:text-5xl font-bold text-white text-center mb-4"
@@ -87,8 +87,7 @@ export default function AppCards() {
                     {APPS.map((app, i) => (
                         <motion.div
                             key={app.number}
-                            className="rounded-xl overflow-hidden flex flex-col"
-                            style={{ background: '#111827', border: '1px solid #1f2937' }}
+                            className="rounded-xl overflow-hidden flex flex-col bg-surface border border-border"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -102,21 +101,13 @@ export default function AppCards() {
                                         src={app.screenshot}
                                         alt={`Screenshot of ${app.name} dashboard`}
                                         fill
-                                        style={{ objectFit: 'cover', objectPosition: 'top' }}
+                                        className="object-cover object-top"
                                         sizes="(max-width: 768px) 100vw, 50vw"
                                     />
-                                    <div
-                                        className="absolute inset-0"
-                                        style={{
-                                            background: 'linear-gradient(to bottom, transparent 60%, #111827 100%)',
-                                        }}
-                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% to-surface" />
                                 </div>
                             ) : (
-                                <div
-                                    className="w-full h-44 flex items-center justify-center"
-                                    style={{ background: '#0d1320' }}
-                                >
+                                <div className="w-full h-44 flex items-center justify-center bg-surface-alt">
                                     <span className="text-gray-600 text-sm font-medium">Coming Soon</span>
                                 </div>
                             )}
@@ -127,10 +118,7 @@ export default function AppCards() {
                                     App {app.number}
                                 </span>
                                 <h3 className="text-xl font-bold text-white">{app.name}</h3>
-                                <span
-                                    className="self-start px-3 py-1 rounded-full text-xs font-medium"
-                                    style={{ background: 'rgba(59,130,246,0.15)', color: '#93c5fd' }}
-                                >
+                                <span className="self-start px-3 py-1 rounded-full text-xs font-medium bg-accent-blue/15 text-blue-300">
                                     {app.persona}
                                 </span>
                                 <p className="text-gray-400 text-sm leading-relaxed">{app.pitch}</p>
@@ -148,8 +136,7 @@ export default function AppCards() {
                                             href={app.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
-                                            style={{ background: 'linear-gradient(135deg, #3b82f6, #6366f1)' }}
+                                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 bg-gradient-to-br from-accent-blue to-accent-indigo"
                                             aria-label={`Launch ${app.name} application`}
                                         >
                                             Launch App →

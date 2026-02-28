@@ -10,6 +10,7 @@ module.exports = {
             colors: {
                 background: '#0a0f1e',
                 surface: '#111827',
+                'surface-alt': '#0d1320',
                 border: '#1f2937',
                 'accent-blue': '#3b82f6',
                 'accent-indigo': '#6366f1',

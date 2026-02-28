@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 export default function Hero() {
     return (
         <section
-            className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, #0a0f1e 0%, #111827 50%, #0f172a 100%)' }}
+            className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-gradient-to-br from-background via-surface to-slate-900"
         >
             {/* Ambient grid overlay */}
             <div
@@ -26,14 +25,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                     The{' '}
-                    <span
-                        style={{
-                            background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text',
-                        }}
-                    >
+                    <span className="bg-gradient-to-br from-accent-blue to-accent-indigo text-transparent bg-clip-text">
                         FDIC Intelligence
                     </span>{' '}
                     Suite.
@@ -57,8 +49,7 @@ export default function Hero() {
                 >
                     <a
                         href="#suite"
-                        className="px-8 py-4 rounded-lg font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-105"
-                        style={{ background: 'linear-gradient(135deg, #3b82f6, #6366f1)' }}
+                        className="px-8 py-4 rounded-lg font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-105 bg-gradient-to-br from-accent-blue to-accent-indigo"
                         aria-label="Explore the FDIC Intelligence Suite"
                     >
                         Explore the Suite →

@@ -18,7 +18,7 @@ const PRINCIPLES = [
 
 export default function Philosophy() {
     return (
-        <section className="py-24 px-6" style={{ background: '#0d1320' }}>
+        <section className="py-24 px-6 bg-surface-alt">
             <div className="max-w-4xl mx-auto">
                 <motion.h2
                     className="text-4xl font-bold text-white text-center mb-16"
@@ -32,13 +32,7 @@ export default function Philosophy() {
                     {PRINCIPLES.map((p, i) => (
                         <motion.div
                             key={p.keyword}
-                            className="p-6 rounded-xl"
-                            style={{
-                                background: '#111827',
-                                border: '1px solid #1f2937',
-                                borderLeftWidth: '4px',
-                                borderLeftColor: '#3b82f6',
-                            }}
+                            className="p-6 rounded-xl bg-surface border border-border border-l-4 border-l-accent-blue"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
