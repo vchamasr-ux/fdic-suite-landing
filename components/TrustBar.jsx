@@ -1,12 +1,35 @@
 'use client';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 
 const STATS = [
-    { value: '4,500+', label: 'Banks Analyzed' },
-    { value: '16', label: 'Quarters of History' },
-    { value: '100%', label: 'Live FDIC Data' },
-    { value: 'Gemini 2.5', label: 'AI Engine' },
+    { value: 4500, display: '4,500+', label: 'Banks Analyzed', prefix: '', suffix: '+' },
+    { value: 16, display: '16', label: 'Quarters of History', prefix: '', suffix: '' },
+    { value: 100, display: '100%', label: 'Live FDIC Data', prefix: '', suffix: '%' },
 ];
+
+function CountUp({ value, suffix, prefix }) {
+    const ref = useRef(null);
+    const motionValue = useMotionValue(0);
+    const rounded = useTransform(motionValue, (v) =>
+        Math.round(v).toLocaleString()
+    );
+    const isInView = useInView(ref, { once: true, margin: '-50px' });
+
+    useEffect(() => {
+        if (isInView) {
+            animate(motionValue, value, { duration: 1.8, ease: 'easeOut' });
+        }
+    }, [isInView, value, motionValue]);
+
+    return (
+        <span ref={ref}>
+            {prefix}
+            <motion.span>{rounded}</motion.span>
+            {suffix}
+        </span>
+    );
+}
 
 export default function TrustBar() {
     return (
@@ -32,11 +55,32 @@ export default function TrustBar() {
                                 backgroundClip: 'text',
                             }}
                         >
-                            {stat.value}
+                            <CountUp value={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
                         </div>
                         <div className="text-sm text-gray-400">{stat.label}</div>
                     </motion.div>
                 ))}
+
+                {/* Gemini stat — no count-up, just text */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                    <div
+                        className="text-3xl font-black mb-1"
+                        style={{
+                            background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                        }}
+                    >
+                        Gemini 2.5
+                    </div>
+                    <div className="text-sm text-gray-400">AI Engine</div>
+                </motion.div>
             </div>
         </section>
     );

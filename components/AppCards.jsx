@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const APPS = [
     {
@@ -14,6 +15,7 @@ const APPS = [
             '16-quarter sparkline trend analysis',
             'AI Executive Briefs via Gemini 2.5 Flash',
         ],
+        screenshot: '/screenshots/benchmark.png',
     },
     {
         number: '02',
@@ -27,6 +29,7 @@ const APPS = [
             'Multi-year synergy modeler with cost reduction paths',
             'Pitchbook PDF export with AI Deal Summary',
         ],
+        screenshot: '/screenshots/ma_radar.png',
     },
     {
         number: '03',
@@ -40,6 +43,7 @@ const APPS = [
             'Z-score ranked prospect leaderboard',
             "AI cold email generator personalized to each bank's KPIs",
         ],
+        screenshot: null,
     },
     {
         number: '04',
@@ -53,6 +57,7 @@ const APPS = [
             'Market Scorecard with deposit CAGR and HHI concentration',
             'De Novo projection modeler for Day 1 / Year 3 balance sheet',
         ],
+        screenshot: null,
     },
 ];
 
@@ -82,7 +87,7 @@ export default function AppCards() {
                     {APPS.map((app, i) => (
                         <motion.div
                             key={app.number}
-                            className="rounded-xl p-6 flex flex-col gap-4"
+                            className="rounded-xl overflow-hidden flex flex-col"
                             style={{ background: '#111827', border: '1px solid #1f2937' }}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -90,42 +95,71 @@ export default function AppCards() {
                             transition={{ duration: 0.5, delay: i * 0.1 }}
                             whileHover={{ scale: 1.02, borderColor: '#3b82f6' }}
                         >
-                            <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
-                                App {app.number}
-                            </span>
-                            <h3 className="text-xl font-bold text-white">{app.name}</h3>
-                            <span
-                                className="self-start px-3 py-1 rounded-full text-xs font-medium"
-                                style={{ background: 'rgba(59,130,246,0.15)', color: '#93c5fd' }}
-                            >
-                                {app.persona}
-                            </span>
-                            <p className="text-gray-400 text-sm leading-relaxed">{app.pitch}</p>
-                            <ul className="flex flex-col gap-2">
-                                {app.features.map((f) => (
-                                    <li key={f} className="flex items-start gap-2 text-sm text-gray-300">
-                                        <span className="text-emerald-400 font-bold mt-0.5">✓</span>
-                                        {f}
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className="mt-auto pt-4">
-                                {app.url ? (
-                                    <a
-                                        href={app.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
-                                        style={{ background: 'linear-gradient(135deg, #3b82f6, #6366f1)' }}
-                                        aria-label={`Launch ${app.name} application`}
-                                    >
-                                        Launch App →
-                                    </a>
-                                ) : (
-                                    <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-gray-500 border border-gray-700">
-                                        Coming Soon
-                                    </span>
-                                )}
+                            {/* Screenshot Preview */}
+                            {app.screenshot ? (
+                                <div className="relative w-full h-44 overflow-hidden">
+                                    <Image
+                                        src={app.screenshot}
+                                        alt={`Screenshot of ${app.name} dashboard`}
+                                        fill
+                                        style={{ objectFit: 'cover', objectPosition: 'top' }}
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                    />
+                                    <div
+                                        className="absolute inset-0"
+                                        style={{
+                                            background: 'linear-gradient(to bottom, transparent 60%, #111827 100%)',
+                                        }}
+                                    />
+                                </div>
+                            ) : (
+                                <div
+                                    className="w-full h-44 flex items-center justify-center"
+                                    style={{ background: '#0d1320' }}
+                                >
+                                    <span className="text-gray-600 text-sm font-medium">Coming Soon</span>
+                                </div>
+                            )}
+
+                            {/* Card Content */}
+                            <div className="p-6 flex flex-col gap-4 flex-1">
+                                <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
+                                    App {app.number}
+                                </span>
+                                <h3 className="text-xl font-bold text-white">{app.name}</h3>
+                                <span
+                                    className="self-start px-3 py-1 rounded-full text-xs font-medium"
+                                    style={{ background: 'rgba(59,130,246,0.15)', color: '#93c5fd' }}
+                                >
+                                    {app.persona}
+                                </span>
+                                <p className="text-gray-400 text-sm leading-relaxed">{app.pitch}</p>
+                                <ul className="flex flex-col gap-2">
+                                    {app.features.map((f) => (
+                                        <li key={f} className="flex items-start gap-2 text-sm text-gray-300">
+                                            <span className="text-emerald-400 font-bold mt-0.5">✓</span>
+                                            {f}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="mt-auto pt-4">
+                                    {app.url ? (
+                                        <a
+                                            href={app.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
+                                            style={{ background: 'linear-gradient(135deg, #3b82f6, #6366f1)' }}
+                                            aria-label={`Launch ${app.name} application`}
+                                        >
+                                            Launch App →
+                                        </a>
+                                    ) : (
+                                        <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-gray-500 border border-gray-700">
+                                            Coming Soon
+                                        </span>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
                     ))}
