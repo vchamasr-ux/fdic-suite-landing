@@ -5,7 +5,7 @@ import { PRINCIPLES } from '@/lib/constants';
 
 export default function Philosophy() {
     return (
-        <section className="py-24 px-6 bg-surface-alt">
+        <section id="philosophy" className="py-16 md:py-20 px-6 bg-surface-alt">
             <div className="max-w-4xl mx-auto">
                 <motion.h2
                     className="text-4xl font-bold text-white text-center mb-16"

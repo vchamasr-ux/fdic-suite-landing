@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import TrustBar from '@/components/TrustBar';
 import AppCards from '@/components/AppCards';
@@ -9,6 +10,7 @@ import ContactCTA from '@/components/ContactCTA';
 export default function Home() {
     return (
         <main>
+            <Header />
             <Hero />
             <TrustBar />
             <AppCards />

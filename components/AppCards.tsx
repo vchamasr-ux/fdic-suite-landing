@@ -6,7 +6,7 @@ import { APPS } from '@/lib/constants';
 
 export default function AppCards() {
     return (
-        <section id="suite" className="py-24 px-6 bg-background">
+        <section id="suite" className="py-16 md:py-20 px-6 bg-background">
             <div className="max-w-6xl mx-auto">
                 <motion.h2
                     className="text-4xl md:text-5xl font-bold text-white text-center mb-4"

@@ -7,7 +7,7 @@ import { STEPS } from '@/lib/constants';
 
 export default function HowItWorks() {
     return (
-        <section className="py-24 px-6 bg-surface-alt">
+        <section id="architecture" className="py-16 md:py-20 px-6 bg-surface-alt">
             <div className="max-w-5xl mx-auto">
                 <motion.h2
                     className="text-4xl font-bold text-white text-center mb-16"
