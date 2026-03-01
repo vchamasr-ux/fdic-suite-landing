@@ -3,16 +3,16 @@ import { motion } from 'framer-motion';
 
 const PRINCIPLES = [
     {
-        keyword: '"Fail Loudly"',
-        desc: 'If data is missing, the app crashes visibly. No silent defaults. No fake zeros. Every broken state surfaces as a visible error.',
+        keyword: 'Uncompromising Data Integrity',
+        desc: "We never guess, approximate, or substitute missing data. If a metric isn't available, we flag it immediately—ensuring you never make a decision based on a silent error.",
     },
     {
-        keyword: '"Live Connections Only"',
-        desc: 'Every metric is sourced from real FDIC API calls. No CSV fallbacks. No mock data. If the source goes down, we fix the source.',
+        keyword: 'Live Connections Only',
+        desc: 'Every metric in our suite is sourced directly from live FDIC API calls. No stale CSVs, no manual updates, and no mock data. When the FDIC updates, your dashboard updates.',
     },
     {
-        keyword: '"Pitchbook-Ready"',
-        desc: 'Every app exports professional-grade PDFs suitable for boardrooms and investor decks. Built for executives, not just engineers.',
+        keyword: 'Boardroom-Ready Exports',
+        desc: 'Stop taking screenshots of dashboards. Every report exports as a professional-grade, high-fidelity PDF instantly. Built for executives, investors, and boardrooms—not just analysts.',
     },
 ];
 

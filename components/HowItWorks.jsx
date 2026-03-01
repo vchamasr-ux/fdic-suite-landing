@@ -1,20 +1,21 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Database, Activity, Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 const STEPS = [
     {
-        icon: Database,
+        iconSrc: '/images/icon-database.png',
         title: 'FDIC API',
         desc: 'Live Call Report data ingested in real-time from the FDIC public API. Every metric is sourced from 4,500+ active institutions, updated quarterly.',
     },
     {
-        icon: Activity,
+        iconSrc: '/images/icon-compute.png',
         title: 'KPI Engine',
         desc: 'Client-side computation of 10+ financial metrics — ROA, ROE, NIM, Efficiency Ratio, Tier 1 Capital — applied across dynamically selected peer groups.',
     },
     {
-        icon: Sparkles,
+        iconSrc: '/images/icon-ai.png',
         title: 'Gemini AI',
         desc: 'Context-aware analysis, executive briefs, and outreach generation — all grounded in the live financial data, never hallucinated.',
     },
@@ -43,10 +44,15 @@ export default function HowItWorks() {
                             transition={{ delay: i * 0.15 }}
                         >
                             <div
-                                className="w-16 h-16 rounded-2xl flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg"
-                                style={{ background: 'linear-gradient(135deg, #3b82f6, #6366f1)', boxShadow: '0 10px 25px -5px rgba(59, 130, 246, 0.4)' }}
+                                className="w-24 h-24 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-2xl relative overflow-hidden"
+                                style={{ background: '#0a0f1e', border: '1px solid #1f2937' }}
                             >
-                                <step.icon className="w-8 h-8 text-white" />
+                                <Image
+                                    src={step.iconSrc}
+                                    alt={step.title}
+                                    fill
+                                    className="object-cover hover:opacity-90 transition-opacity"
+                                />
                             </div>
                             <h3 className="text-xl font-bold text-white tracking-wide">{step.title}</h3>
                             <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>

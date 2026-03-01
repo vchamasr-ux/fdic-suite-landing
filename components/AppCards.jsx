@@ -103,12 +103,13 @@ export default function AppCards() {
                                         fill
                                         className="object-cover object-top"
                                         sizes="(max-width: 768px) 100vw, 50vw"
+                                        priority={i <= 1}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% to-surface" />
                                 </div>
                             ) : (
                                 <div className="w-full h-44 flex items-center justify-center bg-surface-alt">
-                                    <span className="text-gray-600 text-sm font-medium">Coming Soon</span>
+                                    <span className="text-gray-600 text-sm font-medium">In Development</span>
                                 </div>
                             )}
 
@@ -142,9 +143,13 @@ export default function AppCards() {
                                             Launch App →
                                         </a>
                                     ) : (
-                                        <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-gray-500 border border-gray-700">
-                                            Coming Soon
-                                        </span>
+                                        <a
+                                            href={`mailto:vchamasr@gmail.com?subject=Waitlist:%20${encodeURIComponent(app.name)}`}
+                                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-gray-400 border border-gray-700 transition-all duration-200 hover:border-gray-500 hover:text-white"
+                                            aria-label={`Join waitlist for ${app.name}`}
+                                        >
+                                            Join Waitlist
+                                        </a>
                                     )}
                                 </div>
                             </div>

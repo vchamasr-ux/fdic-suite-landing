@@ -1,8 +1,17 @@
 'use client';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, Github, Mail } from 'lucide-react';
+import { Linkedin, Github, Mail, Copy, Check } from 'lucide-react';
 
 export default function ContactCTA() {
+    const [copied, setCopied] = useState(false);
+
+    const handleCopyEmail = () => {
+        navigator.clipboard.writeText('vchamasr@gmail.com');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
     return (
         <section
             className="py-24 px-6 text-center"
@@ -57,14 +66,22 @@ export default function ContactCTA() {
                         <Github size={20} />
                         View GitHub
                     </a>
-                    <a
-                        href="mailto:vchamasr@gmail.com"
-                        className="flex items-center gap-3 px-8 py-4 text-sm font-medium text-gray-400 transition-colors hover:text-white"
-                        aria-label="Send Vincent an email"
+                    <button
+                        onClick={handleCopyEmail}
+                        className="flex items-center gap-3 px-8 py-4 text-sm font-medium text-gray-400 transition-colors hover:text-white relative group"
+                        aria-label="Copy Vincent's email to clipboard"
                     >
                         <Mail size={18} />
                         vchamasr@gmail.com
-                    </a>
+                        <span className="flex items-center justify-center p-1.5 rounded-md bg-[#1f2937] text-gray-400 group-hover:text-white transition-colors">
+                            {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+                        </span>
+                        {copied && (
+                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-xs font-semibold text-emerald-400 bg-[#0d1320] px-3 py-1.5 rounded-md shadow-lg border border-[#1f2937]">
+                                Copied!
+                            </span>
+                        )}
+                    </button>
                 </motion.div>
 
                 <motion.p
