@@ -50,7 +50,10 @@ test.describe('Landing Page E2E Tests', () => {
         expect(response2.ok()).toBeTruthy();
     });
 
-    test('Header & Hero Navigation and Scrolling', async ({ page }) => {
+    test('Header & Hero Navigation and Scrolling', async ({ page, isMobile }) => {
+        // Skip this test on mobile because the navigation links are hidden on small viewports
+        test.skip(isMobile, 'Desktop navigation links are hidden on mobile viewports');
+
         await page.goto('/');
 
         // Click "The Suite" in header and verify it scrolls
@@ -83,7 +86,10 @@ test.describe('Landing Page E2E Tests', () => {
         await expect(youtube).toHaveAttribute('href', 'https://www.youtube.com/@vincentchamasrour7278');
     });
 
-    test('Clipboard Interaction', async ({ page, context }) => {
+    test('Clipboard Interaction', async ({ browserName, page, context }) => {
+        // WebKit (Safari) does not support the clipboard-write permission via the Permissions API in Playwright
+        test.skip(browserName === 'webkit', 'Clipboard API permissions not supported in WebKit');
+
         // Grant clipboard permissions to the browser context
         await context.grantPermissions(['clipboard-read', 'clipboard-write']);
 

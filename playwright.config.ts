@@ -16,7 +16,13 @@ export default defineConfig({
             name: 'chromium',
             use: { ...devices['Desktop Chrome'] },
         },
-        // For simplicity, we can just test on chromium first, or include others if needed.
-        // We'll stick to chromium to save time if they aren't installed.
+        {
+            name: 'Mobile Chrome',
+            use: { ...devices['Pixel 5'] },
+        },
+        {
+            name: 'Mobile Safari',
+            use: { ...devices['iPhone 12'] },
+        },
     ],
 });
