@@ -30,7 +30,7 @@ export default function AppCards() {
                     {APPS.map((app, i) => (
                         <motion.div
                             key={app.number}
-                            className="rounded-xl overflow-hidden flex flex-col bg-surface border border-border"
+                            className="rounded-xl overflow-hidden flex flex-col bg-surface border border-white/5 shadow-2xl shadow-black/60"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -48,7 +48,7 @@ export default function AppCards() {
                                         sizes="(max-width: 768px) 100vw, 50vw"
                                         priority={i <= 1}
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% to-surface" />
+                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% to-surface ring-1 ring-inset ring-white/10" />
                                 </div>
                             ) : (
                                 <div className="w-full h-44 flex items-center justify-center bg-surface-alt">

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, Github, Mail, Copy, Check } from 'lucide-react';
+import { Linkedin, Youtube, Mail, Copy, Check } from 'lucide-react';
 
 export default function ContactCTA() {
     const [copied, setCopied] = useState(false);
@@ -46,7 +46,7 @@ export default function ContactCTA() {
                     transition={{ delay: 0.2 }}
                 >
                     <a
-                        href="https://www.linkedin.com/in/vincentchamasrour"
+                        href="https://www.linkedin.com/in/vincent-chamasrour/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 px-8 py-4 rounded-lg font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-105"
@@ -57,15 +57,15 @@ export default function ContactCTA() {
                         Connect on LinkedIn
                     </a>
                     <a
-                        href="https://github.com/vchamasr-ux"
+                        href="https://www.youtube.com/@vincentchamasrour7278"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 px-8 py-4 rounded-lg font-semibold text-gray-300 border transition-all duration-200 hover:border-blue-500 hover:text-white"
+                        className="flex items-center gap-3 px-8 py-4 rounded-lg font-semibold text-gray-300 border transition-all duration-200 hover:border-red-500 hover:text-white"
                         style={{ borderColor: '#1f2937' }}
-                        aria-label="View Vincent's GitHub profile"
+                        aria-label="View Vincent's YouTube channel"
                     >
-                        <Github size={20} />
-                        View GitHub
+                        <Youtube size={20} />
+                        View YouTube
                     </a>
                     <button
                         onClick={handleCopyEmail}

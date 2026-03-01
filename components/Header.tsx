@@ -1,11 +1,33 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 export default function Header() {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState('');
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = ['suite', 'architecture', 'philosophy', 'contact'];
+            let current = '';
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    // If the section top is past a certain threshold from the top of the viewport
+                    if (rect.top <= 200) {
+                        current = section;
+                    }
+                }
+            }
+            setActiveSection(current);
+        };
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Trigger immediately
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious() ?? 0;
@@ -45,13 +67,13 @@ export default function Header() {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-8">
-                    <a href="#suite" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <a href="#suite" className={`text-sm font-medium transition-colors ${activeSection === 'suite' ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]' : 'text-gray-400 hover:text-white'}`}>
                         The Suite
                     </a>
-                    <a href="#architecture" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <a href="#architecture" className={`text-sm font-medium transition-colors ${activeSection === 'architecture' ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]' : 'text-gray-400 hover:text-white'}`}>
                         Architecture
                     </a>
-                    <a href="#philosophy" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <a href="#philosophy" className={`text-sm font-medium transition-colors ${activeSection === 'philosophy' ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]' : 'text-gray-400 hover:text-white'}`}>
                         Philosophy
                     </a>
                 </nav>
