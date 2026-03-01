@@ -2,13 +2,15 @@
 import { useEffect, useRef } from 'react';
 import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 
-const STATS = [
-    { value: 4500, display: '4,500+', label: 'Banks Analyzed', prefix: '', suffix: '+' },
-    { value: 16, display: '16', label: 'Quarters of History', prefix: '', suffix: '' },
-    { value: 100, display: '100%', label: 'Live FDIC Data', prefix: '', suffix: '%' },
-];
+import { STATS } from '@/lib/constants';
 
-function CountUp({ value, suffix, prefix }) {
+interface CountUpProps {
+    value: number;
+    suffix: string;
+    prefix: string;
+}
+
+function CountUp({ value, suffix, prefix }: CountUpProps) {
     const ref = useRef(null);
     const motionValue = useMotionValue(0);
     const rounded = useTransform(motionValue, (v) =>

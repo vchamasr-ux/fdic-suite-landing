@@ -2,64 +2,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-const APPS = [
-    {
-        number: '01',
-        name: 'Bank Value Benchmark',
-        url: 'https://bank-value-benchmark-mvp.vercel.app',
-        persona: 'For: Community Bank CEOs & CFOs',
-        pitch:
-            'Transform raw FDIC Call Report data into boardroom-ready intelligence. Benchmark your bank against 20 dynamically generated peers across 6 critical KPIs — in real time.',
-        features: [
-            'Live peer benchmarking with percentile gauges',
-            '16-quarter sparkline trend analysis',
-            'AI Executive Briefs via Gemini 2.5 Flash',
-        ],
-        screenshot: '/screenshots/benchmark.png',
-    },
-    {
-        number: '02',
-        name: 'Bank M&A Radar',
-        url: 'https://bank-ma-radar.vercel.app',
-        persona: 'For: M&A Advisory Teams & Investment Bankers',
-        pitch:
-            'Identify acquisition targets, model synergies, and generate pitchbooks — all from live FDIC data. Go from target search to pro forma PDF in one session.',
-        features: [
-            'Geographic target radar with asset-size filtering',
-            'Multi-year synergy modeler with cost reduction paths',
-            'Pitchbook PDF export with AI Deal Summary',
-        ],
-        screenshot: '/screenshots/ma_radar.png',
-    },
-    {
-        number: '03',
-        name: 'B2B Fintech Prospector',
-        url: 'https://fintechprospector.vercel.app',
-        persona: 'For: Fintech CROs & VP Sales',
-        pitch:
-            "Stop cold-calling blind. Filter the entire FDIC universe by your buyers' pain points and auto-generate personalized outreach emails for the highest-value targets.",
-        features: [
-            'Pain-point filters: Efficiency, Liquidity, NIM compression',
-            'Z-score ranked prospect leaderboard',
-            "AI cold email generator personalized to each bank's KPIs",
-        ],
-        screenshot: '/screenshots/prospector.png',
-    },
-    {
-        number: '04',
-        name: 'De Novo Whitespace Explorer',
-        url: 'https://de-novo-whitespace-explorer.vercel.app',
-        persona: 'For: Private Equity & Bank Founders',
-        pitch:
-            'Consolidation has left entire markets starving for a local bank. Discover exactly where — a live choropleth map revealing geographic whitespace based on deposit density.',
-        features: [
-            'Live US heatmap colored by Whitespace Score',
-            'Market Scorecard with deposit CAGR and HHI concentration',
-            'De Novo projection modeler for Day 1 / Year 3 balance sheet',
-        ],
-        screenshot: '/screenshots/denovo.png',
-    },
-];
+import { APPS } from '@/lib/constants';
 
 export default function AppCards() {
     return (

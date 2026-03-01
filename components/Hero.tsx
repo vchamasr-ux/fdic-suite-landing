@@ -25,6 +25,8 @@ export default function Hero() {
                     alt="Abstract premium tech background"
                     fill
                     className="object-cover"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkOPo/AAXTA781QxP3AAAAAElFTkSuQmCC"
                     priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950" />

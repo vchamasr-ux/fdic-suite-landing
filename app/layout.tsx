@@ -29,7 +29,7 @@ export const metadata = {
     robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" className={inter.variable}>
             <body>{children}</body>

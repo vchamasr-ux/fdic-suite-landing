@@ -1,20 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 
-const PRINCIPLES = [
-    {
-        keyword: 'Uncompromising Data Integrity',
-        desc: "We never guess, approximate, or substitute missing data. If a metric isn't available, we flag it immediately—ensuring you never make a decision based on a silent error.",
-    },
-    {
-        keyword: 'Live Connections Only',
-        desc: 'Every metric in our suite is sourced directly from live FDIC API calls. No stale CSVs, no manual updates, and no mock data. When the FDIC updates, your dashboard updates.',
-    },
-    {
-        keyword: 'Boardroom-Ready Exports',
-        desc: 'Stop taking screenshots of dashboards. Every report exports as a professional-grade, high-fidelity PDF instantly. Built for executives, investors, and boardrooms—not just analysts.',
-    },
-];
+import { PRINCIPLES } from '@/lib/constants';
 
 export default function Philosophy() {
     return (

@@ -1,16 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 
-const STACK = [
-    { name: 'React', color: '#61dafb' },
-    { name: 'Next.js', color: '#ffffff' },
-    { name: 'Tailwind CSS', color: '#38bdf8' },
-    { name: 'Framer Motion', color: '#f5108c' },
-    { name: 'Recharts', color: '#22d3ee' },
-    { name: 'Gemini AI', color: '#4285f4' },
-    { name: 'Vercel', color: '#ffffff' },
-    { name: 'FDIC API', color: '#10b981' }, // Success green
-];
+import { STACK } from '@/lib/constants';
 
 export default function TheStack() {
     return (

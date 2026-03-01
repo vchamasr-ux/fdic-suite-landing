@@ -3,23 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
-const STEPS = [
-    {
-        iconSrc: '/images/icon-database.png',
-        title: 'FDIC API',
-        desc: 'Live Call Report data ingested in real-time from the FDIC public API. Every metric is sourced from 4,500+ active institutions, updated quarterly.',
-    },
-    {
-        iconSrc: '/images/icon-compute.png',
-        title: 'KPI Engine',
-        desc: 'Client-side computation of 10+ financial metrics — ROA, ROE, NIM, Efficiency Ratio, Tier 1 Capital — applied across dynamically selected peer groups.',
-    },
-    {
-        iconSrc: '/images/icon-ai.png',
-        title: 'Gemini AI',
-        desc: 'Context-aware analysis, executive briefs, and outreach generation — all grounded in the live financial data, never hallucinated.',
-    },
-];
+import { STEPS } from '@/lib/constants';
 
 export default function HowItWorks() {
     return (

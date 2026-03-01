@@ -75,7 +75,13 @@ export default function ContactCTA() {
                         vchamasr@gmail.com
                         <span className="flex items-center justify-center p-1.5 rounded-md bg-[#1f2937] text-gray-400 group-hover:text-white transition-colors">
                             {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+                            <span className="sr-only">{copied ? 'Email address copied' : 'Copy email address'}</span>
                         </span>
+                        {/* Accessible live region for screen readers */}
+                        <span aria-live="polite" className="sr-only">
+                            {copied ? 'Copied to clipboard' : ''}
+                        </span>
+                        {/* Visual tooltip */}
                         {copied && (
                             <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-xs font-semibold text-emerald-400 bg-[#0d1320] px-3 py-1.5 rounded-md shadow-lg border border-[#1f2937]">
                                 Copied!
