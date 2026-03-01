@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 export default function Header() {
@@ -30,8 +30,8 @@ export default function Header() {
             animate={hidden ? "hidden" : "visible"}
             transition={{ duration: 0.35, ease: "easeInOut" }}
             className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled
-                    ? "bg-[#0a0f1e]/80 backdrop-blur-md border-b border-[#1f2937] shadow-lg"
-                    : "bg-transparent border-transparent"
+                ? "bg-[#0a0f1e]/80 backdrop-blur-md border-b border-[#1f2937] shadow-lg"
+                : "bg-transparent border-transparent"
                 }`}
         >
             <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
