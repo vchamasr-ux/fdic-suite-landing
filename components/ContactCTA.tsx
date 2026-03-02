@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, Youtube, Mail, Copy, Check } from 'lucide-react';
+import { Linkedin, Github, Mail, Copy, Check } from 'lucide-react';
 
 export default function ContactCTA() {
     const [copied, setCopied] = useState(false);
@@ -56,15 +56,15 @@ export default function ContactCTA() {
                         Connect on LinkedIn
                     </a>
                     <a
-                        href="https://www.youtube.com/@vincentchamasrour7278"
+                        href="https://github.com/vchamasr-ux"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 px-8 py-4 rounded-lg font-semibold text-gray-300 border transition-all duration-200 hover:border-red-500 hover:text-white"
+                        className="flex items-center gap-3 px-8 py-4 rounded-lg font-semibold text-gray-300 border transition-all duration-200 hover:border-gray-500 hover:text-white"
                         style={{ borderColor: '#1f2937' }}
-                        aria-label="View Vincent's YouTube channel"
+                        aria-label="View Vincent's GitHub profile"
                     >
-                        <Youtube size={20} />
-                        View YouTube
+                        <Github size={20} />
+                        View GitHub
                     </a>
                     <button
                         onClick={handleCopyEmail}
