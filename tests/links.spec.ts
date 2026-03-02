@@ -15,23 +15,18 @@ test.describe('Fail Loudly: Outbound Connectivity Guarantee', () => {
             }
         }
 
-        // Validate each unique external link
-        for (const href of hrefs) {
-            // Some professional networks (LinkedIn) block automated fetch requests with 429/999, 
-            // so we'll log those instead of hard failing if it's a known restricted domain.
-            if (href.includes('linkedin.com')) {
-                console.log(`Skipping strict 200 check for restricted social graph domain: ${href}`);
-                continue;
-            }
+        // Validate each unique external link in parallel
+        await Promise.all(
+            Array.from(hrefs).map(async (href) => {
+                // LinkedIn blocks automated fetch requests with 999, skip strict check
+                if (href.includes('linkedin.com')) {
+                    console.log(`Skipping strict 200 check for restricted social graph domain: ${href}`);
+                    return;
+                }
 
-            try {
                 const response = await request.get(href);
-                // The Product Spec strictly dictates checking for 200 OK
                 expect(response.status(), `Link failed to return 200 OK: ${href}`).toBe(200);
-            } catch (error) {
-                // Fail loudly if fetch completely fails (DNS error, etc)
-                throw new Error(`Failed to ping ${href}: ${(error as Error).message}`);
-            }
-        }
+            })
+        );
     });
 });

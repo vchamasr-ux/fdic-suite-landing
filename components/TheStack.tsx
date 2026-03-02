@@ -1,4 +1,4 @@
-'use client';
+'use client'; // Requires 'use client' for Framer Motion
 import { motion } from 'framer-motion';
 
 import { STACK } from '@/lib/constants';
@@ -19,20 +19,16 @@ export default function TheStack() {
                     {STACK.map((tech, i) => (
                         <motion.div
                             key={tech.name}
-                            className="px-6 py-3 rounded-full text-sm font-medium text-gray-300 bg-surface border border-border cursor-default"
-                            style={{
-                                background: '#111827',
-                                border: '1px solid #1f2937',
-                                borderLeft: `3px solid ${tech.color}`
-                            }}
+                            className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-gray-300 bg-surface border border-border border-l-[3px] cursor-default"
+                            style={{ borderLeftColor: tech.color }}
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.05 }}
-                            whileHover={{ borderColor: tech.color, color: '#ffffff', background: '#1f2937' }}
+                            whileHover={{ color: '#ffffff', backgroundColor: '#1f2937' }}
                         >
                             <span
-                                className="w-2.5 h-2.5 rounded-full"
+                                className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                                 style={{ backgroundColor: tech.color, boxShadow: `0 0 10px ${tech.color}80` }}
                             />
                             {tech.name}

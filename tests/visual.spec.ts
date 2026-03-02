@@ -3,8 +3,8 @@ import { test, expect } from '@playwright/test';
 test.describe('Visual Stability & Layout Regression Tests', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/');
-        // Wait for animations and fonts to settle completely to avoid flaky visual tests
-        await page.waitForTimeout(1500);
+        // Wait for animations and fonts to fully settle
+        await page.waitForLoadState('networkidle');
     });
 
     test('Hero section locked in via pixel-perfect snapshot', async ({ page }) => {

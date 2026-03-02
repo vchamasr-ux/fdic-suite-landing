@@ -8,8 +8,8 @@ test.describe('Accessibility (A11y) Checks', () => {
 
         // Wait for the main elements to load (Hero section, TrustBar, etc.)
         await page.waitForSelector('main', { state: 'attached' });
-        // Let Framer motion settle
-        await page.waitForTimeout(1000);
+        // Let Framer Motion settle
+        await page.waitForLoadState('networkidle');
 
         // Run Axe scanning
         const accessibilityScanResults = await new AxeBuilder({ page })

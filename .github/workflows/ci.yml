@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Build & Test
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers (Chromium only)
+        run: npx playwright install --with-deps chromium
+
+      - name: Build Next.js
+        run: npm run build
+
+      - name: Start Next.js server in background (for Lighthouse)
+        run: npm run start &
+
+      - name: Wait for local server to be ready
+        run: npx wait-on http://localhost:3000 --timeout 30000
+
+      # Run all test suites sequentially against Vercel live URL
+      # (except Lighthouse, which targets the local build on localhost:3000)
+      - name: Run Journey tests
+        run: npm run test:journey
+        env:
+          CI: true
+
+      - name: Run Strictness tests
+        run: npm run test:strictness
+        env:
+          CI: true
+
+      - name: Run Accessibility tests
+        run: npm run test:a11y
+        env:
+          CI: true
+
+      - name: Run Link connectivity tests
+        run: npm run test:links
+        env:
+          CI: true
+
+      - name: Run Lighthouse audit (against local build)
+        run: npm run test:lighthouse
+        env:
+          CI: true
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

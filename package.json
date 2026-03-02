@@ -8,7 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "test:e2e": "playwright test",
-    "test:lighthouse": "playwright test tests/lighthouse.spec.ts --project=chromium"
+    "test:journey": "playwright test tests/journey.spec.ts --project=chromium",
+    "test:a11y": "playwright test tests/a11y.spec.ts --project=chromium",
+    "test:strictness": "playwright test tests/strictness.spec.ts --project=chromium",
+    "test:links": "playwright test tests/links.spec.ts --project=chromium",
+    "test:lighthouse": "playwright test tests/lighthouse.spec.ts --project=chromium",
+    "test:visual": "playwright test tests/visual.spec.ts --project=chromium"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",

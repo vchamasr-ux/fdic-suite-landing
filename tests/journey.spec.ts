@@ -3,8 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('User Journey & Content Integrity Tests', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/');
-        // Wait for animations to trigger
-        await page.waitForTimeout(500);
+        await page.waitForLoadState('networkidle');
     });
 
     test('Hero CTA scrolls to Suite section smoothly', async ({ page }) => {
@@ -61,9 +60,8 @@ test.describe('User Journey & Content Integrity Tests', () => {
         // aria-live region inside the button shouldn't be empty anymore
         await expect(page.locator('span[aria-live="polite"]')).toHaveText('Copied to clipboard');
 
-        // Verify the tooltip disappears after 2 seconds (allow 2.5s for test flakiness)
-        await page.waitForTimeout(2500);
-        await expect(page.getByText('Copied!', { exact: true })).not.toBeVisible();
+        // Verify the tooltip disappears after 2 seconds
+        await expect(page.getByText('Copied!', { exact: true })).not.toBeVisible({ timeout: 3500 });
     });
 
     test('External Profile Links correctly route outbound', async ({ page }) => {
@@ -77,17 +75,13 @@ test.describe('User Journey & Content Integrity Tests', () => {
     });
 
     test('TrustBar statistics render on scroll', async ({ page }) => {
-        // Scroll to TrustBar
-        const trustBar = page.getByText('4,500+');
-        await trustBar.scrollIntoViewIfNeeded();
+        // Scroll to TrustBar section
+        await page.locator('section').filter({ hasText: 'Banks Analyzed' }).scrollIntoViewIfNeeded();
 
-        // Wait for Framer Motion to count up
-        await page.waitForTimeout(2000);
-
-        // Check text content
-        await expect(page.getByText('4,500+')).toBeVisible();
+        // Wait for Framer Motion count-up to reach final values
+        await expect(page.getByText('4,500+')).toBeVisible({ timeout: 4000 });
         await expect(page.getByText('Banks Analyzed')).toBeVisible();
-        await expect(page.getByText('16')).toBeVisible();
+        await expect(page.getByText('16')).toBeVisible({ timeout: 4000 });
         await expect(page.getByText('Quarters of History')).toBeVisible();
     });
 });

@@ -15,8 +15,7 @@ export default function ContactCTA() {
     return (
         <section
             id="contact"
-            className="py-16 md:py-20 px-6 text-center"
-            style={{ background: 'linear-gradient(135deg, #0a0f1e 0%, #111827 100%)' }}
+            className="py-16 md:py-20 px-6 text-center bg-gradient-to-br from-background to-surface"
         >
             <div className="max-w-2xl mx-auto">
                 <motion.h2
