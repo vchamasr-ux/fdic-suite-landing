@@ -1,0 +1,38 @@
+name: Lighthouse Audits
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lighthouse:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps chromium
+      
+    - name: Build Next.js
+      run: npm run build
+      
+    - name: Start Next.js Application in Background
+      run: npm run start &
+      
+    - name: Run Playwright Lighthouse Performance Tests
+      run: |
+        npx wait-on http://localhost:3000
+        npm run test:e2e -- tests/lighthouse.spec.ts --project=chromium
+      env:
+        CI: true
