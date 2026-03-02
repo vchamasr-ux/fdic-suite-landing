@@ -20,7 +20,7 @@ test.describe('Fail Loudly: Outbound Connectivity Guarantee', () => {
             Array.from(hrefs).map(async (href) => {
                 // LinkedIn blocks automated fetch requests with 999, skip strict check
                 if (href.includes('linkedin.com')) {
-                    console.log(`Skipping strict 200 check for restricted social graph domain: ${href}`);
+                    // LinkedIn returns 999 for automated requests — skip strict check silently
                     return;
                 }
 

@@ -15,9 +15,8 @@ async def run():
             await page.screenshot(path="public/screenshots/prospector.png")
             await browser.close()
             print("Success! Saved to public/screenshots/prospector.png")
-    except Exception as e:
-        print(f"Error: {e}")
-        sys.exit(1)
+    except Exception:
+        raise
 
 if __name__ == "__main__":
     asyncio.run(run())
