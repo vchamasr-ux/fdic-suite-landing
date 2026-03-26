@@ -6,6 +6,7 @@ export interface AppProps {
     pitch: string;
     features: string[];
     screenshot: string | null;
+    youtubeId?: string;
 }
 
 export const APPS: AppProps[] = [
@@ -36,6 +37,7 @@ export const APPS: AppProps[] = [
             'Pitchbook PDF export with AI Deal Summary',
         ],
         screenshot: '/screenshots/ma_radar.png',
+        youtubeId: 'A4wd7UmRIzU',
     },
     {
         number: '03',

@@ -37,8 +37,19 @@ export default function AppCards() {
                             transition={{ duration: 0.5, delay: i * 0.1 }}
                             whileHover={{ scale: 1.02, borderColor: '#3b82f6' }}
                         >
-                            {/* Screenshot Preview */}
-                            {app.screenshot ? (
+                            {/* Visual Preview (Video or Screenshot) */}
+                            {app.youtubeId ? (
+                                <div className="relative w-full h-44 overflow-hidden bg-black flex items-center justify-center">
+                                    <iframe
+                                        className="w-full h-full object-cover"
+                                        src={`https://www.youtube.com/embed/${app.youtubeId}?autoplay=0&rel=0`}
+                                        title={`${app.name} Demo Video`}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                    <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/10 rounded-t-xl" />
+                                </div>
+                            ) : app.screenshot ? (
                                 <div className="relative w-full h-44 overflow-hidden">
                                     <Image
                                         src={app.screenshot}
@@ -55,6 +66,7 @@ export default function AppCards() {
                                     <span className="text-gray-600 text-sm font-medium">In Development</span>
                                 </div>
                             )}
+
 
                             {/* Card Content */}
                             <div className="p-6 flex flex-col gap-4 flex-1">
