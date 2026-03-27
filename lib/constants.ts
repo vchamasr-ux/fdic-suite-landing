@@ -23,6 +23,7 @@ export const APPS: AppProps[] = [
             'AI Executive Briefs via Gemini 2.5 Flash',
         ],
         screenshot: '/screenshots/benchmark.png',
+        youtubeId: 'XgHLMYZKHfo',
     },
     {
         number: '02',
