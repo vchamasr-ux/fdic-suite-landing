@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import SuiteIdentity from './SuiteIdentity';
 
 export default function Header() {
     const { scrollY } = useScroll();
@@ -78,13 +79,16 @@ export default function Header() {
                     </a>
                 </nav>
 
-                {/* CTA */}
-                <a
-                    href="#contact"
-                    className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/10 transition-all duration-200"
-                >
-                    Contact
-                </a>
+                {/* Shared identity + CTA */}
+                <div className="flex items-center gap-2">
+                    <SuiteIdentity />
+                    <a
+                        href="#contact"
+                        className="hidden sm:inline-flex px-4 py-2 rounded-lg text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/10 transition-all duration-200"
+                    >
+                        Contact
+                    </a>
+                </div>
             </div>
         </motion.header>
     );
